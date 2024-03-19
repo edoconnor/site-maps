@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebaseConfig: {
     apiKey: 'AIzaSyDTipRG3LwrCEtnH0_piyyvnmZ4Cw0rBjM',
     authDomain: 'event-site-maps-xl.firebaseapp.com',
