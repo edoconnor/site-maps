@@ -9,7 +9,14 @@ import * as L from 'leaflet';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements AfterViewInit {
-  private map!: L.Map; 
+  private map!: L.Map;
+
+  htmlIcon = L.icon({
+    iconUrl: 'assets/marker.png',
+    iconSize: [30, 30], 
+    iconAnchor: [10, 10], 
+    popupAnchor: [5,-5], 
+  });
 
   constructor() {}
 
@@ -19,7 +26,7 @@ export class MainComponent implements AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [0, 0], 
+      center: [0, 0],
       zoom: 13,
     });
 
@@ -33,7 +40,7 @@ export class MainComponent implements AfterViewInit {
         (position) => {
           const { latitude, longitude } = position.coords;
           this.map.setView(new L.LatLng(latitude, longitude), 13);
-          L.marker([latitude, longitude])
+          L.marker([latitude, longitude], { icon: this.htmlIcon }) // Use custom icon here
             .addTo(this.map)
             .bindPopup('You are here!')
             .openPopup();
